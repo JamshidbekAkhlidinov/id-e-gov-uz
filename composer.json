@@ -1,0 +1,17 @@
+{
+    "name": "ustadev/id-egov-uz",
+    "description": "IdEGovUz integration",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "ustadev\\IdEgovUz\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jamshidbek Akhlidinov",
+            "email": "JamshidbekAkhlidinov@gmail.com"
+        }
+    ],
+    "require": {}
+}

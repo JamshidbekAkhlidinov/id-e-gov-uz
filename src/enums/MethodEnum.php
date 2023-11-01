@@ -1,6 +1,6 @@
 <?php
 
-namespace ustadev\IdEGovUz\enums;
+namespace ustadev\enums;
 
 interface MethodEnum
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ustadev\IdEGovUz;
+namespace ustadev;
 
 class IdEGovUz
 {
