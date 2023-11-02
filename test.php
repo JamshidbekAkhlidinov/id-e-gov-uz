@@ -1,36 +1,43 @@
-<pre>
-    <?php
+<?php
 
+use ustadev\idegovuz\IdEGovUzApi;
 
-    use ustadev\IdEgovUz\IdEGovUzApi;
+include_once "vendor/autoload.php";
 
-    include_once "vendor/autoload.php";
+$api = new IdEGovUzApi(
+    "client_id",
+    "client_secret",
+);
 
-    $obj = new IdEGovUz("test", "test");
+$server_url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
 
-    $server_url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
+?>
 
-    if (isset($_GET['code'])) {
-        $code = $_GET['code'];
-
-        $result = $obj->getAccessToken($code, $server_url);
-        echo "access token api\n";
-        print_r($result);
-
-        $access_token = $result['access_token'] ?? '';
-        $scope = $result['scope'] ?? '';
-        if ($access_token && $scope) {
-            echo "user data\n";
-            print_r($obj->getUserData($access_token, $scope));
-            print_r($obj->logout($access_token, $scope));
-       }else{
-            print_r("access token not found");
-        }
-    }
-    ?>
-</pre>
 <h1>
-    <a href="<?= $obj->getLoginUrl($server_url) ?>">
+    <a href="<?= $api->getLoginUrl($server_url) ?>">
         Login for IdEGovUz
     </a>
 </h1>
+
+<pre>
+<?php
+if (isset($_GET['code'])) {
+    $code = $_GET['code'];
+
+    $result = $api->getAccessToken($code, $server_url);
+    echo "access token api\n";
+    print_r($result);
+
+    $access_token = $result['access_token'] ?? '';
+    $scope = $result['scope'] ?? '';
+    if ($access_token && $scope) {
+        echo "user data\n";
+        print_r($api->getUserData($access_token, $scope));
+        //print_r($api->logout($access_token, $scope));
+    } else {
+        print_r("access token not found");
+    }
+}
+
+?>
+</pre>
