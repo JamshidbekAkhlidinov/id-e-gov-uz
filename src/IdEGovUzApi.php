@@ -1,8 +1,8 @@
 <?php
 
-namespace ustadev\IdEGovUz;
+namespace ustadev\idegovuz;
 
-use ustadev\IdEGovUz\enums\MethodEnum;
+use ustadev\idegovuz\enums\MethodEnum;
 
 class IdEGovUzApi
 {

@@ -2,7 +2,7 @@
     <?php
 
 
-    use ustadev\IdEGovUz;
+    use ustadev\IdEgovUz\IdEGovUzApi;
 
     include_once "vendor/autoload.php";
 

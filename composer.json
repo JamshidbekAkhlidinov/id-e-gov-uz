@@ -1,10 +1,10 @@
 {
-    "name": "ustadev/id-egov-uz",
+    "name": "ustadev/idegovuz",
     "description": "IdEGovUz integration",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "ustadev\\IdEgovUz\\": "src/"
+            "ustadev\\idegovuz\\": "src/"
         }
     },
     "authors": [
