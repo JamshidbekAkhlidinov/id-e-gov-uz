@@ -82,7 +82,7 @@ class IdEGovUzApi
         if ($this->method == MethodEnum::POST) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
         }
-
-        return json_decode(curl_exec($ch), true);
+        $response = curl_exec($ch);
+        return json_decode($response, true) ?? [];
     }
 }
