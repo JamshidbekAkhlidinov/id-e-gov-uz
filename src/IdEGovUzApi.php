@@ -9,15 +9,17 @@ class IdEGovUzApi
     public string $client_id = "";
     public string $client_secret = "";
     public string $scope = 'scope';
+    public string $state = 'state';
 
     private const auth_url = "https://sso.egov.uz/sso/oauth/Authorization.do";
     private string $method = MethodEnum::GET;
     private string $response_type = 'one_code';
 
-    public function __construct($client_id, $client_secret)
+    public function __construct($client_id, $client_secret,$state)
     {
         $this->client_id = $client_id;
         $this->client_secret = $client_secret;
+        $this->state = $state;
     }
 
     public function getLoginUrl($redirect_url): string
@@ -27,7 +29,7 @@ class IdEGovUzApi
             'client_id' => $this->client_id,
             'redirect_uri' => $redirect_url,
             'scope' => $this->scope,
-            'state' => $this->client_id
+            'state' => $this->state
         ];
         return self::auth_url . "?" . http_build_query($params);
     }
