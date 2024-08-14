@@ -15,7 +15,7 @@ class IdEGovUzApi
     private string $method = MethodEnum::GET;
     private string $response_type = 'one_code';
 
-    public function __construct($client_id, $client_secret,$state)
+    public function __construct($client_id, $client_secret, $state)
     {
         $this->client_id = $client_id;
         $this->client_secret = $client_secret;
@@ -46,16 +46,19 @@ class IdEGovUzApi
         ]);
     }
 
-    public function getUserData($access_token, $scope): array
+    public function getUserData($access_token, $scope): UserData
     {
         $this->method = MethodEnum::POST;
-        return $this->request([
-            'grant_type' => 'one_access_token_identify',
-            'client_id' => $this->client_id,
-            'client_secret' => $this->client_secret,
-            'access_token' => $access_token,
-            'scope' => $scope,
-        ]);
+
+        return new UserData(
+            $this->request([
+                'grant_type' => 'one_access_token_identify',
+                'client_id' => $this->client_id,
+                'client_secret' => $this->client_secret,
+                'access_token' => $access_token,
+                'scope' => $scope,
+            ])
+        );
     }
 
     public function logout($access_token, $scope): array
